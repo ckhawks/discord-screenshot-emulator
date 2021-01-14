@@ -1,0 +1,84 @@
+[29-Jul-19 09:01 PM] directive#1000
+#carter #carter #carter                                       , I've found a way to do it
+[29-Jul-19 09:01 PM] directive#1000
+it's a weird one
+[29-Jul-19 09:01 PM] directive#1000
+you can put a label on it and add some sort of text
+[29-Jul-19 09:01 PM] directive#1000
+but the whole thing would be too big
+[29-Jul-19 09:02 PM] directive#1000
+so i made it a button
+[29-Jul-19 09:02 PM] directive#1000
+and it has the same effect
+[29-Jul-19 09:02 PM] directive#1000
+but instead of just doing that
+[29-Jul-19 09:02 PM] directive#1000
+it adds clickable links to all of your stuff
+[29-Jul-19 09:02 PM] directive#1000
+and it adds a button to your news feed
+[29-Jul-19 09:02 PM] directive#1000
+so people can see all of your stuff
+[29-Jul-19 09:02 PM] directive#1000
+people will probably just take the default
+[29-Jul-19 09:02 PM] directive#1000
+and just click it
+[29-Jul-19 09:03 PM] directive#1000
+and voila
+[29-Jul-19 09:03 PM] directive#1000
+it works for me
+[29-Jul-19 09:03 PM] directive#1000
+but it would make the site way too big for my liking
+[29-Jul-19 09:04 PM] directive#1000
+i want to be able to change what the "default" is at any time
+[29-Jul-19 09:04 PM] directive#1000
+so i can't really do it
+[29-Jul-19 09:04 PM] directive#1000
+but it's a start
+[29-Jul-19 09:04 PM] directive#1000
+and then the design can change as well
+[29-Jul-19 09:04 PM] directive#1000
+the backend would be the same for both of us
+[29-Jul-19 09:04 PM] directive#1000
+so we could make something cool
+[29-Jul-19 09:04 PM] directive#1000
+and then the frontend could be anything
+[29-Jul-19 09:04 PM] directive#1000
+but we would both be using the same backend
+[29-Jul-19 09:04 PM] directive#1000
+so it would be like a single product
+[29-Jul-19 09:04 PM] directive#1000
+but separate product trees would work just fine
+[29-Jul-19 09:04 PM] directive#1000
+also jp is a cedar
+[29-Jul-19 09:04 PM] directive#1000
+and he's been using discord for like a year
+[29-Jul-19 09:04 PM] directive#1000
+so it would be easy to revert
+[29-Jul-19 09:04 PM] directive#1000
+or change the default backend
+[29-Jul-19 09:04 PM] directive#1000
+change the server, or disable it altogether
+[29-Jul-19 09:04 PM] directive#1000
+if you disable discord then you become a reseller, which is illegal in trentens
+[29-Jul-19 09:04 PM] directive#1000
+if something breaks on your server then you become a trenten
+[29-Jul-19 09:04 PM] directive#1000
+we are the service, not the product
+[29-Jul-19 09:05 PM] directive#1000
+and then voila voila voila
+[29-Jul-19 09:05 PM] directive#1000
+we are the service, not the product
+[29-Jul-19 09:05 PM] directive#1000
+theres only two products
+[29-Jul-19 09:05 PM] directive#1000
+one is a fucking broken product
+[29-Jul-19 09:05 PM] directive#1000
+the other one is cool
+[29-Jul-19 09:05 PM] directive#1000
+theres only two products
+[29-Jul-19 09:05 PM] directive#1000
+one is a fucking broken product
+[29-Jul-19 09:05 PM] directive#1000
+the other one is cool
+[29-Jul-19 09:05 PM] directive#1000
+ 

@@ -114,41 +114,33 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 
-# chrome_options = Options()
-# #chrome_options.add_argument(f"--window-size=600,{ss_height}") 
-# chrome_options.add_argument("--headless")
-# driver = webdriver.Chrome()
-#driver.get("html.html")
+chrome_options = Options()
+chrome_options.add_argument("--window-size=600,200")
+chrome_options.add_argument('--force-device-scale-factor=1')
+chrome_options.add_argument("--headless")
 
-# driver.get("data:text/html;charset=utf-8,{html_content}".format(html_content=html_content))
+
+driver = webdriver.Chrome(options=chrome_options)
+
+
+#driver.get("file:///Users/trenten/Documents/discord-screenshot-emulator/output.html")
+
+#driver.get("data:text/html;charset=utf-8,{html_content}".format(html_content=html_content))
 
 #driver.get("file:///D:/Websites/discord-screenshot-emulator/output.html")  # https://stackoverflow.com/a/52498384
 
-""" # assert "Python" in driver.title
-elem = driver.find_element_by_name("q")
-elem.clear()
-elem.send_keys("pycon")
-elem.send_keys(Keys.RETURN)
-# assert "No results found." not in driver.page_source """
 
-from PIL import Image
-from io import BytesIO
+driver.get("file:///Users/trenten/Documents/discord-screenshot-emulator/output.html")
 
-
-
-options = webdriver.ChromeOptions()
-options.headless = True
-
-driver = webdriver.Chrome(options=options)
-driver.get("file:///D:/Websites/discord-screenshot-emulator/output.html")
-
-S = lambda X: driver.execute_script('return document.body.parentNode.scroll'+X)
-driver.set_window_size(S('Width'),S('Height')) # May need manual adjustment
-driver.find_element_by_tag_name('body').screenshot('BIGSHOT4.png')
+js = "return document.getElementsByClassName('chatContent-a9vAAp')[0].scrollHeight;"
+height = driver.execute_script(js)
+print(height)
+driver.set_window_size(600,height) 
+driver.save_screenshot('screenshot.png')
 
 driver.quit()
 
-""" # cropping image https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.crop
+# cropping image https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.crop
 
 from PIL import Image
 
@@ -157,11 +149,9 @@ im = Image.open("screenshot.png")
 # The crop method from the Image module takes four coordinates as input.
 # The right can also be represented as (left+width)
 # and lower can be represented as (upper+height).
-(left, upper, right, lower) = (0, 20, 570, ss_height-132)
+(left, upper, right, lower) = (0, 0, 570, height)
 
 # Here the image "im" is cropped and assigned to new variable im_crop
 im_crop = im.crop((left, upper, right, lower))
 
-im_crop.save("screenshot_cropped.png") """
-
-
+im_crop.save("screenshot_cropped.png")

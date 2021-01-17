@@ -155,7 +155,6 @@ driver.get("file:///Users/trenten/Documents/discord-screenshot-emulator/output.h
 
 js = "return document.getElementsByClassName('chatContent-a9vAAp')[0].scrollHeight;"
 height = driver.execute_script(js)
-print(height)
 driver.set_window_size(600,height) 
 driver.save_screenshot('screenshot.png')
 

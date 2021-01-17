@@ -28,6 +28,59 @@ def format_message(date, user, message_content):
     elif user.find("manager") != -1:
         author = "Manager"
         profile_pic = "https://cdn.discordapp.com/avatars/219637673273458699/1bc8b0a74325b3d1bd5df3b1419cf118.png?size=128"
+    elif user.find("novenara") != -1:
+        author = "Novenara"
+        profile_pic = "https://cdn.discordapp.com/avatars/348740144687349771/4ab6c16efe6f7c2ade07f4866f7d8a13.png?size=128"
+    elif user.find("vupf") != -1:
+        author = "vupf"
+        profile_pic = "https://cdn.discordapp.com/avatars/321460350010523650/cc8bc37bece2c6d36573cd67544f7349.png?size=128"
+    elif user.find("chas") != -1:
+        author = "Chasroth"
+        profile_pic = "https://cdn.discordapp.com/avatars/197197593426526209/6f4f6bcc41ef93c49fc4e9cd6dde0e06.png?size=128"
+    elif user.find("eli") != -1:
+        author = "Pure_Poet"
+        profile_pic = "https://cdn.discordapp.com/avatars/222084911866052609/0da04933b69968a2b027a344108f1349.png?size=128"
+    elif user.find("camy") != -1:
+        author = "camy"
+        profile_pic = "https://cdn.discordapp.com/avatars/313898533747163138/6e55fa7e0987a72615fb370a96e01ce3.png?size=128"
+    elif user.find("petitefirequeen") != -1:
+        author = "Faith"
+        profile_pic = "https://cdn.discordapp.com/avatars/276145546429726721/16949cac0e533161ea187e8f72035abb.png?size=128"
+    elif user.find("hysterical") != -1:
+        author = "Ricky"
+        profile_pic = "https://cdn.discordapp.com/avatars/229667397328437248/69aa57368c98083113d7adfe8306db76.png?size=128"
+    elif user.find("epicarcher") != -1:
+        author = "Ean"
+        profile_pic = "https://cdn.discordapp.com/avatars/184051140676026368/1c0a3f272d128e91c4422f82f8c2f505.png?size=128"
+    elif user.find("offbrandcereal") != -1:
+        author = "UghUyYyy"
+        profile_pic = "https://cdn.discordapp.com/avatars/208399448894603266/18bd6be138556a9b1f896f5fd0b0830f.png?size=128"
+    elif user.find("plaeg") != -1:
+        author = "P laeg Sawyer"
+        profile_pic = "https://cdn.discordapp.com/avatars/305179163164147712/461af05b86e310533ca2368e8ac9c646.png?size=128"
+    elif user.find("dez") != -1:
+        author = "dezzy wezzy"
+        profile_pic = "https://cdn.discordapp.com/avatars/181259770869710849/e1846f58dc666c4b54ff231e91a5c582.png?size=128"
+    elif user.find("flubba") != -1:
+        author = "Flubba"
+        profile_pic = "https://cdn.discordapp.com/avatars/200435014314229760/9eeca58238de6b716e2480bedbcf06d1.png?size=128"
+    elif user.find("sinful") != -1:
+        author = "Sinful"
+        profile_pic = "https://cdn.discordapp.com/avatars/162021361076666368/011cc182b5f5aa64ec1dd7cfa1c657e2.png?size=128"
+        
+    """ chasroth https://cdn.discordapp.com/avatars/197197593426526209/6f4f6bcc41ef93c49fc4e9cd6dde0e06.png?size=128
+    novenara https://cdn.discordapp.com/avatars/348740144687349771/4ab6c16efe6f7c2ade07f4866f7d8a13.png?size=128
+    vupf https://cdn.discordapp.com/avatars/321460350010523650/cc8bc37bece2c6d36573cd67544f7349.png?size=128
+    eli https://cdn.discordapp.com/avatars/222084911866052609/0da04933b69968a2b027a344108f1349.png?size=128
+    camy https://cdn.discordapp.com/avatars/313898533747163138/6e55fa7e0987a72615fb370a96e01ce3.png?size=128
+    faith https://cdn.discordapp.com/avatars/276145546429726721/16949cac0e533161ea187e8f72035abb.png?size=128
+    ricky https://cdn.discordapp.com/avatars/229667397328437248/69aa57368c98083113d7adfe8306db76.png?size=128
+    ean https://cdn.discordapp.com/avatars/184051140676026368/1c0a3f272d128e91c4422f82f8c2f505.png?size=128
+    robert https://cdn.discordapp.com/avatars/208399448894603266/18bd6be138556a9b1f896f5fd0b0830f.png?size=128
+    plaeg https://cdn.discordapp.com/avatars/305179163164147712/461af05b86e310533ca2368e8ac9c646.png?size=128
+    dez https://cdn.discordapp.com/avatars/181259770869710849/e1846f58dc666c4b54ff231e91a5c582.png?size=128
+    flubba https://cdn.discordapp.com/avatars/200435014314229760/9eeca58238de6b716e2480bedbcf06d1.png?size=128
+    sinful https://cdn.discordapp.com/avatars/162021361076666368/011cc182b5f5aa64ec1dd7cfa1c657e2.png?size=128 """
 
     time = date #"1:29 PM"
     

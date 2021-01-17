@@ -1,7 +1,10 @@
 from datetime import datetime
 
 import time 
+import sys
 
+for arg in sys.argv[1:]: 
+    print(arg)
 
 input_file = 'chatlogs/tJ3HJmsa.txt'
 skip_lines = 0
@@ -37,14 +40,18 @@ def format_message(date, user, message_content):
 
     return f"""
         <div class="message-2qnXI6 cozyMessage-3V1Y8y groupStart-23k01U wrapper-2a6GCs cozy-3raOZG zalgo-jN1Ica" role="listitem" data-list-item-id="chat-messages___chat-messages-799362128745594881" tabindex="-1" id="chat-messages-799362128745594881">
-        <div class="contents-2mQqc9" role="document"><img src="{profile_pic}" aria-hidden="true" class="avatar-1BDn8e clickable-1bVtEA" alt=" ">
-        <h2 class="header-23xsNx"><span class="headerText-3Uvj1Y"><span class="username-1A8OIy clickable-1bVtEA" aria-controls="popout_59" aria-expanded="false" role="button" tabindex="0">{author}</span></span><span class="timestamp-3ZCmNB"><span aria-label="Today at 1:39 PM">Today at {time}</span></span>
-        </h2>
-        <div class="markup-2BOw-j messageContent-2qWWxC">{message}</div>
-        </div>
-        <div class="container-1ov-mD"></div>
+            <div class="contents-2mQqc9" role="document"><img src="{profile_pic}" aria-hidden="true" class="avatar-1BDn8e clickable-1bVtEA" alt=" ">
+                <h2 class="header-23xsNx"><span class="headerText-3Uvj1Y"><span class="username-1A8OIy clickable-1bVtEA" aria-controls="popout_59" aria-expanded="false" role="button" tabindex="0">{author}</span></span><span class="timestamp-3ZCmNB"><span aria-label="Today at 1:39 PM">Today at {time}</span></span>
+                </h2>
+                <div class="markup-2BOw-j messageContent-2qWWxC">{message}</div>
+                </div>
+            <div class="container-1ov-mD"></div>
         </div>
     """
+
+    
+
+
 
 def create_html():
     with open('templates/upper.html', 'r') as file:
@@ -115,23 +122,30 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 
 chrome_options = Options()
-chrome_options.add_argument(f"--window-size=600,{ss_height}") 
+chrome_options.add_argument("--window-size=600,200")
+chrome_options.add_argument('--force-device-scale-factor=1')
+chrome_options.add_argument("--headless")
+
+
 driver = webdriver.Chrome(options=chrome_options)
-#driver.get("html.html")
 
-# driver.get("data:text/html;charset=utf-8,{html_content}".format(html_content=html_content))
 
-driver.get("file:///D:/Websites/discord-screenshot-emulator/output.html")  # https://stackoverflow.com/a/52498384
-""" # assert "Python" in driver.title
-elem = driver.find_element_by_name("q")
-elem.clear()
-elem.send_keys("pycon")
-elem.send_keys(Keys.RETURN)
-# assert "No results found." not in driver.page_source """
-time.sleep(10)
-driver.save_screenshot("screenshot.png")
-driver.close()
+#driver.get("file:///Users/trenten/Documents/discord-screenshot-emulator/output.html")
 
+#driver.get("data:text/html;charset=utf-8,{html_content}".format(html_content=html_content))
+
+#driver.get("file:///D:/Websites/discord-screenshot-emulator/output.html")  # https://stackoverflow.com/a/52498384
+
+
+driver.get("file:///Users/trenten/Documents/discord-screenshot-emulator/output.html")
+
+js = "return document.getElementsByClassName('chatContent-a9vAAp')[0].scrollHeight;"
+height = driver.execute_script(js)
+print(height)
+driver.set_window_size(600,height) 
+driver.save_screenshot('screenshot.png')
+
+driver.quit()
 
 # cropping image https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.crop
 
@@ -142,11 +156,8 @@ im = Image.open("screenshot.png")
 # The crop method from the Image module takes four coordinates as input.
 # The right can also be represented as (left+width)
 # and lower can be represented as (upper+height).
-(left, upper, right, lower) = (0, 20, 570, ss_height-132)
-
+(left, upper, right, lower) = (0, 0, 570, height)
 # Here the image "im" is cropped and assigned to new variable im_crop
 im_crop = im.crop((left, upper, right, lower))
 
 im_crop.save("screenshot_cropped.png")
-
-

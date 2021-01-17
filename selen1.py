@@ -1,7 +1,10 @@
 from datetime import datetime
 
 import time 
+import sys
 
+for arg in sys.argv[1:]: 
+    print(arg)
 
 input_file = 'chatlogs/tJ3HJmsa.txt'
 skip_lines = 0
@@ -37,14 +40,18 @@ def format_message(date, user, message_content):
 
     return f"""
         <div class="message-2qnXI6 cozyMessage-3V1Y8y groupStart-23k01U wrapper-2a6GCs cozy-3raOZG zalgo-jN1Ica" role="listitem" data-list-item-id="chat-messages___chat-messages-799362128745594881" tabindex="-1" id="chat-messages-799362128745594881">
-        <div class="contents-2mQqc9" role="document"><img src="{profile_pic}" aria-hidden="true" class="avatar-1BDn8e clickable-1bVtEA" alt=" ">
-        <h2 class="header-23xsNx"><span class="headerText-3Uvj1Y"><span class="username-1A8OIy clickable-1bVtEA" aria-controls="popout_59" aria-expanded="false" role="button" tabindex="0">{author}</span></span><span class="timestamp-3ZCmNB"><span aria-label="Today at 1:39 PM">Today at {time}</span></span>
-        </h2>
-        <div class="markup-2BOw-j messageContent-2qWWxC">{message}</div>
-        </div>
-        <div class="container-1ov-mD"></div>
+            <div class="contents-2mQqc9" role="document"><img src="{profile_pic}" aria-hidden="true" class="avatar-1BDn8e clickable-1bVtEA" alt=" ">
+                <h2 class="header-23xsNx"><span class="headerText-3Uvj1Y"><span class="username-1A8OIy clickable-1bVtEA" aria-controls="popout_59" aria-expanded="false" role="button" tabindex="0">{author}</span></span><span class="timestamp-3ZCmNB"><span aria-label="Today at 1:39 PM">Today at {time}</span></span>
+                </h2>
+                <div class="markup-2BOw-j messageContent-2qWWxC">{message}</div>
+                </div>
+            <div class="container-1ov-mD"></div>
         </div>
     """
+
+    
+
+
 
 def create_html():
     with open('templates/upper.html', 'r') as file:
@@ -150,8 +157,16 @@ im = Image.open("screenshot.png")
 # The right can also be represented as (left+width)
 # and lower can be represented as (upper+height).
 (left, upper, right, lower) = (0, 0, 570, height)
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 # Here the image "im" is cropped and assigned to new variable im_crop
 im_crop = im.crop((left, upper, right, lower))
 
 im_crop.save("screenshot_cropped.png")
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes

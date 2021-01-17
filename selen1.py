@@ -92,7 +92,6 @@ def format_message(date, user, message_content):
     message = message_content.strip() #"he alive !!!!!!!!"
 
     if user == previous_user:
-        previous_user = user
         script = script + f"\n{message}"
         return f"""
             <div class="message-2qnXI6 cozyMessage-3V1Y8y wrapper-2a6GCs cozy-3raOZG zalgo-jN1Ica" role="listitem" data-list-item-id="chat-messages___chat-messages-799362128745594881" tabindex="-1" id="chat-messages-799362128745594881">

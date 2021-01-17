@@ -157,16 +157,7 @@ im = Image.open("screenshot.png")
 # The right can also be represented as (left+width)
 # and lower can be represented as (upper+height).
 (left, upper, right, lower) = (0, 0, 570, height)
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 # Here the image "im" is cropped and assigned to new variable im_crop
 im_crop = im.crop((left, upper, right, lower))
 
 im_crop.save("screenshot_cropped.png")
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes

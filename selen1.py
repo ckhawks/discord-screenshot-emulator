@@ -1,17 +1,29 @@
-from datetime import datetime
-
 import time 
 import sys
+from datetime import datetime
+from timeit import default_timer as timer
+start = timer()
+
+import pyttsx3
+import os
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+from PIL import Image
+
+# todo make user argument do something
+# drag chatlog onto batch 
 
 for arg in sys.argv[1:]: 
     print(arg)
 
-input_file = 'chatlogs/tJ3HJmsa.txt'
+input_file = 'chatlogs/Q4mZ6HyR.txt'
 skip_lines = 0
-ss_height = 900
 previous_user = None
+script = ""
 
 def format_message(date, user, message_content):
+    global script
     global previous_user
     profile_pic = ""
 
@@ -70,20 +82,6 @@ def format_message(date, user, message_content):
         author = "Sinful"
         profile_pic = "https://cdn.discordapp.com/avatars/162021361076666368/011cc182b5f5aa64ec1dd7cfa1c657e2.png?size=128"
         
-    """ chasroth https://cdn.discordapp.com/avatars/197197593426526209/6f4f6bcc41ef93c49fc4e9cd6dde0e06.png?size=128
-    novenara https://cdn.discordapp.com/avatars/348740144687349771/4ab6c16efe6f7c2ade07f4866f7d8a13.png?size=128
-    vupf https://cdn.discordapp.com/avatars/321460350010523650/cc8bc37bece2c6d36573cd67544f7349.png?size=128
-    eli https://cdn.discordapp.com/avatars/222084911866052609/0da04933b69968a2b027a344108f1349.png?size=128
-    camy https://cdn.discordapp.com/avatars/313898533747163138/6e55fa7e0987a72615fb370a96e01ce3.png?size=128
-    faith https://cdn.discordapp.com/avatars/276145546429726721/16949cac0e533161ea187e8f72035abb.png?size=128
-    ricky https://cdn.discordapp.com/avatars/229667397328437248/69aa57368c98083113d7adfe8306db76.png?size=128
-    ean https://cdn.discordapp.com/avatars/184051140676026368/1c0a3f272d128e91c4422f82f8c2f505.png?size=128
-    robert https://cdn.discordapp.com/avatars/208399448894603266/18bd6be138556a9b1f896f5fd0b0830f.png?size=128
-    plaeg https://cdn.discordapp.com/avatars/305179163164147712/461af05b86e310533ca2368e8ac9c646.png?size=128
-    dez https://cdn.discordapp.com/avatars/181259770869710849/e1846f58dc666c4b54ff231e91a5c582.png?size=128
-    flubba https://cdn.discordapp.com/avatars/200435014314229760/9eeca58238de6b716e2480bedbcf06d1.png?size=128
-    sinful https://cdn.discordapp.com/avatars/162021361076666368/011cc182b5f5aa64ec1dd7cfa1c657e2.png?size=128 """
-
     time = date #"1:29 PM"
     
     # 02-Sep-19 12:05 AM
@@ -95,6 +93,7 @@ def format_message(date, user, message_content):
 
     if user == previous_user:
         previous_user = user
+        script = script + f"\n{message}"
         return f"""
             <div class="message-2qnXI6 cozyMessage-3V1Y8y wrapper-2a6GCs cozy-3raOZG zalgo-jN1Ica" role="listitem" data-list-item-id="chat-messages___chat-messages-799362128745594881" tabindex="-1" id="chat-messages-799362128745594881">
                 <div class="contents-2mQqc9" role="document">
@@ -105,6 +104,7 @@ def format_message(date, user, message_content):
         """
     else:
         previous_user = user 
+        script = script + f"\n{author}: {message}"
         return f"""
             <div class="message-2qnXI6 cozyMessage-3V1Y8y groupStart-23k01U wrapper-2a6GCs cozy-3raOZG zalgo-jN1Ica" role="listitem" data-list-item-id="chat-messages___chat-messages-799362128745594881" tabindex="-1" id="chat-messages-799362128745594881">
                 <div class="contents-2mQqc9" role="document"><img src="{profile_pic}" aria-hidden="true" class="avatar-1BDn8e clickable-1bVtEA" alt=" ">
@@ -115,10 +115,6 @@ def format_message(date, user, message_content):
                 <div class="container-1ov-mD"></div>
             </div>
         """
-
-    
-
-
 
 def create_html():
     with open('templates/upper.html', 'r') as file:
@@ -182,11 +178,9 @@ def create_html():
 create_html()
 
 
-
-
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.options import Options
+###########################
+########################### SCREENSHOT
+###########################
 
 chrome_options = Options()
 chrome_options.add_argument("--window-size=600,200")
@@ -204,7 +198,7 @@ driver = webdriver.Chrome(options=chrome_options)
 #driver.get("file:///D:/Websites/discord-screenshot-emulator/output.html")  # https://stackoverflow.com/a/52498384
 
 
-driver.get("file:///Users/trenten/Documents/discord-screenshot-emulator/output.html")
+driver.get("file:///D:/Websites/discord-screenshot-emulator/output.html")
 
 js = "return document.getElementsByClassName('chatContent-a9vAAp')[0].scrollHeight;"
 height = driver.execute_script(js)
@@ -215,7 +209,7 @@ driver.quit()
 
 # cropping image https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.crop
 
-from PIL import Image
+
 
 im = Image.open("screenshot.png")
 
@@ -227,3 +221,45 @@ im = Image.open("screenshot.png")
 im_crop = im.crop((left, upper, right, lower))
 
 im_crop.save("screenshot_cropped.png")
+
+###########################
+########################### TEXT TO SPEECH
+###########################
+
+engine = pyttsx3.init() # object creation
+
+""" RATE"""
+rate = engine.getProperty('rate')   # getting details of current speaking rate
+print (rate)                        #printing current voice rate
+engine.setProperty('rate', 200)     # setting up new voice rate
+
+"""VOLUME"""
+volume = engine.getProperty('volume')   #getting to know current volume level (min=0 and max=1)
+print (volume)                          #printing current volume level
+engine.setProperty('volume', 1)    # setting up volume level  between 0 and 1
+
+"""VOICE"""
+voices = engine.getProperty('voices')       #getting details of current voice
+#engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
+engine.setProperty('voice', voices[0].id)   #changing index, changes voices. 1 for female
+
+""" engine.say("Hello World!")
+engine.say('My current speaking rate is ' + str(rate))
+engine.runAndWait()
+engine.stop() """
+
+"""Saving Voice to a file"""
+# On linux make sure that 'espeak' and 'ffmpeg' are installed
+print(script)
+engine.save_to_file(script, 'narration_temp.mp3')
+engine.runAndWait()
+
+###########################
+########################### CREATE VIDEO WITH IMAGE AND AUDIO
+###########################
+
+os.system(f'.\\ffmpeg-2021-01-12-git-ca21cb1e36-essentials_build\\bin\\ffmpeg -loop 1 -i screenshot_cropped.png -i narration_temp.mp3 -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest -y out1.mp4')
+
+
+end = timer()
+print(f"Finished in {end - start} seconds") # Time in seconds, e.g. 5.38091952400282

@@ -3,8 +3,8 @@ from datetime import datetime
 import time 
 
 
-input_file = 'chatlogs/ZuzHb4MP.txt'
-skip_lines = 30
+input_file = 'chatlogs/tJ3HJmsa.txt'
+skip_lines = 0
 ss_height = 900
 
 def format_message(date, user, message_content):
@@ -29,7 +29,7 @@ def format_message(date, user, message_content):
     time = date #"1:29 PM"
     
     # 02-Sep-19 12:05 AM
-    print(f"The fucky date {date}")
+    #print(f"The fucky date {date}")
     datetime_object = datetime.strptime(date, '%d-%b-%y %I:%M %p') # '%b-%d %Y %I:%M%p')
 
     time = datetime_object.strftime('%I:%M %p')
@@ -61,7 +61,7 @@ def create_html():
     for i in range(skip_lines):
         f.readline()
         count = count + 1
-        print(count)
+        #print(count)
 
     date = "29-Jul-19 09:05 PM"
     user = ""
@@ -116,7 +116,7 @@ from selenium.webdriver.chrome.options import Options
 
 chrome_options = Options()
 chrome_options.add_argument(f"--window-size=600,{ss_height}") 
-driver = webdriver.Chrome(chrome_options=chrome_options)
+driver = webdriver.Chrome(options=chrome_options)
 #driver.get("html.html")
 
 # driver.get("data:text/html;charset=utf-8,{html_content}".format(html_content=html_content))
@@ -128,7 +128,7 @@ elem.clear()
 elem.send_keys("pycon")
 elem.send_keys(Keys.RETURN)
 # assert "No results found." not in driver.page_source """
-
+time.sleep(10)
 driver.save_screenshot("screenshot.png")
 driver.close()
 

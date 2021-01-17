@@ -9,8 +9,10 @@ for arg in sys.argv[1:]:
 input_file = 'chatlogs/tJ3HJmsa.txt'
 skip_lines = 0
 ss_height = 900
+previous_user = None
 
 def format_message(date, user, message_content):
+    global previous_user
     profile_pic = ""
 
     author = ""
@@ -91,16 +93,28 @@ def format_message(date, user, message_content):
     time = datetime_object.strftime('%I:%M %p')
     message = message_content.strip() #"he alive !!!!!!!!"
 
-    return f"""
-        <div class="message-2qnXI6 cozyMessage-3V1Y8y groupStart-23k01U wrapper-2a6GCs cozy-3raOZG zalgo-jN1Ica" role="listitem" data-list-item-id="chat-messages___chat-messages-799362128745594881" tabindex="-1" id="chat-messages-799362128745594881">
-            <div class="contents-2mQqc9" role="document"><img src="{profile_pic}" aria-hidden="true" class="avatar-1BDn8e clickable-1bVtEA" alt=" ">
-                <h2 class="header-23xsNx"><span class="headerText-3Uvj1Y"><span class="username-1A8OIy clickable-1bVtEA" aria-controls="popout_59" aria-expanded="false" role="button" tabindex="0">{author}</span></span><span class="timestamp-3ZCmNB"><span aria-label="Today at 1:39 PM">Today at {time}</span></span>
-                </h2>
-                <div class="markup-2BOw-j messageContent-2qWWxC">{message}</div>
-                </div>
-            <div class="container-1ov-mD"></div>
-        </div>
-    """
+    if user == previous_user:
+        previous_user = user
+        return f"""
+            <div class="message-2qnXI6 cozyMessage-3V1Y8y wrapper-2a6GCs cozy-3raOZG zalgo-jN1Ica" role="listitem" data-list-item-id="chat-messages___chat-messages-799362128745594881" tabindex="-1" id="chat-messages-799362128745594881">
+                <div class="contents-2mQqc9" role="document">
+                    <div class="markup-2BOw-j messageContent-2qWWxC">{message}</div>
+                    </div>
+                <div class="container-1ov-mD"></div>
+            </div>
+        """
+    else:
+        previous_user = user 
+        return f"""
+            <div class="message-2qnXI6 cozyMessage-3V1Y8y groupStart-23k01U wrapper-2a6GCs cozy-3raOZG zalgo-jN1Ica" role="listitem" data-list-item-id="chat-messages___chat-messages-799362128745594881" tabindex="-1" id="chat-messages-799362128745594881">
+                <div class="contents-2mQqc9" role="document"><img src="{profile_pic}" aria-hidden="true" class="avatar-1BDn8e clickable-1bVtEA" alt=" ">
+                    <h2 class="header-23xsNx"><span class="headerText-3Uvj1Y"><span class="username-1A8OIy clickable-1bVtEA" aria-controls="popout_59" aria-expanded="false" role="button" tabindex="0">{author}</span></span><span class="timestamp-3ZCmNB"><span aria-label="Today at 1:39 PM">Today at {time}</span></span>
+                    </h2>
+                    <div class="markup-2BOw-j messageContent-2qWWxC">{message}</div>
+                    </div>
+                <div class="container-1ov-mD"></div>
+            </div>
+        """
 
     
 
@@ -194,7 +208,6 @@ driver.get("file:///Users/trenten/Documents/discord-screenshot-emulator/output.h
 
 js = "return document.getElementsByClassName('chatContent-a9vAAp')[0].scrollHeight;"
 height = driver.execute_script(js)
-print(height)
 driver.set_window_size(600,height) 
 driver.save_screenshot('screenshot.png')
 
